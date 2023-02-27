@@ -1,3 +1,5 @@
+
+
 //Create Node
 class Node{
     constructor(value){
@@ -9,7 +11,7 @@ class Node{
   class LinkedList{
     constructor(){
       this.head= null,
-      this.size =0
+      this.size = 0
     }
   // adding methods
     isEmpty(){
@@ -20,6 +22,7 @@ class Node{
     }
     //Add new node to the begining of the list
     prepend(value){
+      //create new node with giving value
       const node = new Node(value)
       if(this.isEmpty()){
         this.head = node
@@ -31,6 +34,7 @@ class Node{
     }
     //add new node to the end of linked
     append(value){
+       //create new node with giving value
        const node = new Node(value);
        if(this.isEmpty()){
          this.head = node
@@ -59,6 +63,7 @@ class Node{
     }
   }
   
+  // Create new LinkedList
   const list = new LinkedList
   console.log(list.isEmpty())
   console.log(list.getSize())
