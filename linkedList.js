@@ -47,6 +47,25 @@ class Node{
        }
       this.size ++
     }
+//Inset node on i sercain position (index)
+insert(value,index){
+    if(index < 0 || index > this.size){
+      return
+    }
+    if(index === 0){
+      this.prepend(value)
+    }else{
+      let node = new Node(value)
+      let prev = this.head
+      for(let i =0; i< index-1; i++){
+        prev = prev.next
+      }
+        node.next = prev.next
+        prev.next = node
+        this.size ++
+    }
+  }
+
   // print all nodes
     print(){
       if(this.isEmpty()){
@@ -68,10 +87,22 @@ class Node{
   console.log(list.isEmpty())
   console.log(list.getSize())
   //list.print()
-  list.append(16)
+  //list.append(16)
   //list.print()
-  list.append(3)
+  //list.append(3)
   //list.print()
-  list.append(17)
-  list.print()
+  //list.append(17)
+  //list.print()
   //console.log(prepend(16))
+
+list.insert(10,0)
+list.print()
+
+list.insert(20,0)
+list.print()
+
+list.insert(30,1)
+list.print()
+
+list.insert(40,2)
+ list.print()
