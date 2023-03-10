@@ -1,98 +1,120 @@
 class Node {
-  constructor(value) {
-    (this.value = value), (this.left = null), (this.right = null);
-  }
+    constructor(value) {
+        this.value = value,
+            this.left = null,
+            this.right = null
+    }
 }
 class BinarySeachTree {
-  constructor() {
-    this.root = null;
-  }
-  isEmpty() {
-    return this.root === null;
-  }
-  insert(value) {
-    let newNode = new Node(value);
-    if (this.isEmpty()) {
-      this.root = newNode;
-    } else {
-      this.insertNode(this.root, newNode);
+    constructor() {
+        this.root = null
     }
-  }
-  insertNode(root, newNode) {
-    //check the left sub-tree
-    if (newNode.value < root.value) {
-      if (root.left === null) {
-        root.left = newNode;
-      } else {
-        // call recursive
-        this.insertNode(root.left, newNode);
-      }
-    } else {
-      //check the right sub-tree
-      if (root.right === null) {
-        root.right = newNode;
-      } else {
-        // call recusive
-        this.insertNode(root.right, newNode);
-      }
+    isEmpty() {
+        return this.root === null
     }
-  }
-  //search for given node value
-  search(root, value) {
-    if (!root) {
-      return false;
-    } else {
-      if (root.value === value) {
-        return true;
-      } else {
-        if (value < root.value) {
-          return this.search(root.left, value);
+    insert(value) {
+        let newNode = new Node(value)
+        if (this.isEmpty()) {
+            this.root = newNode
         } else {
-          return this.search(root.right, value);
+            this.insertNode(this.root, newNode)
         }
-      }
     }
-  }
-  // preorder travelsal
-  preorder(root) {
-    if (root) {
-      console.log(root.value);
-      this.preorder(root.left);
-      this.preorder(root.right);
+    insertNode(root, newNode) {
+        //check the left sub-tree
+        if (newNode.value < root.value) {
+            if (root.left === null) {
+                root.left = newNode
+            } else {
+                // call recursive
+                this.insertNode(root.left, newNode)
+            }
+        } else {
+            //check the right sub-tree
+            if (root.right === null) {
+                root.right = newNode
+            } else {
+                // call recusive
+                this.insertNode(root.right, newNode)
+            }
+        }
     }
-  }
-  //inorder Traversal
-  inorder(root) {
-    if (root) {
-      this.inorder(root.left);
-      console.log(root.value);
-      this.inorder(root.right);
+    search(root, value) {
+        if (!root) {
+            return false
+        } else {
+            if (root.value === value) {
+                return true
+            } else {
+                if (value < root.value) {
+                    return this.search(root.left, value)
+                } else {
+                    return this.search(root.right, value)
+                }
+            }
+        }
     }
-  }
-  // postorder traversal
-  postorder(root) {
-    if (root) {
-      this.postorder(root.left);
-      this.postorder(root.right);
-      console.log(root.value);
+    // preorder travelsal
+    preorder(root) {
+        if (root) {
+            console.log(root.value)
+            this.preorder(root.left)
+            this.preorder(root.right)
+        }
     }
-  }
+    //inorder Traversal 
+    inorder(root) {
+        if (root) {
+            this.inorder(root.left)
+            console.log(root.value)
+            this.inorder(root.right)
+        }
+    }
+    // postorder traversal
+    postorder(root) {
+        if (root) {
+            this.postorder(root.left)
+            this.postorder(root.right)
+            console.log(root.value)
+        }
+    }
+
+    //Binary Search Tree Breadth First Search
+    levelOrder() {
+        let queue = []
+        queue.push(this.root)
+        while (queue.length) {
+            let current = queue.shift()
+            console.log(current.value)
+            if (current.left) {
+                queue.push(current.left)
+            }
+            if (current.right) {
+                queue.push(current.right)
+            }
+        }
+    }
+
+
+
 }
 
-let bst = new BinarySeachTree();
+let bst = new BinarySeachTree()
 //console.log("is empty?", bst.isEmpty())
-bst.insert(10);
-bst.insert(5);
-bst.insert(15);
-bst.insert(3);
-bst.insert(7);
+bst.insert(10)
+bst.insert(5)
+bst.insert(15)
+bst.insert(3)
+bst.insert(7)
 
-console.log(bst.search(10));
-console.log(bst.search(5));
-console.log(bst.search(20));
-console.log("preorder traversal");
-console.log(bst.preorder(bst.root));
-console.log("inorder traversal");
-console.log(bst.inorder(bst.root));
-console.log("postorder traversal");
-console.log(bst.postorder(bst.root));
+console.log(bst.search(10))
+console.log(bst.search(5))
+console.log(bst.search(20))
+console.log("preorder traversal")
+console.log(bst.preorder(bst.root))
+console.log("inorder traversal")
+console.log(bst.inorder(bst.root))
+console.log("postorder traversal")
+console.log(bst.postorder(bst.root))
+console.log("level order")
+console.log(bst.levelOrder(bst.root))
