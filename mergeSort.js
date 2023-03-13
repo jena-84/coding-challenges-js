@@ -10,7 +10,7 @@ function mergeSortAlgorithm(arr) {
   }
   function merge(leftArr, rightArr) {
     let result = []
-    while (leftArr, rightArr) {
+    while (leftArr.length, rightArr.length) {
       if (leftArr[0] < rightArr[0]) {
         result.push(leftArr.shift())
       } else {
